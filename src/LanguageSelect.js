@@ -8,6 +8,8 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
+import { LANGUAGES } from './appEnums';
+
 const StyledFormControl = styled(FormControl)`
   && { width: 100%; }
 `
@@ -27,8 +29,9 @@ const LanguageSelect = ({value, setValue}) => {
           id: 'language-select',
         }}
       >
-        <MenuItem value={'en-us'}>English (United States)</MenuItem>
-        <MenuItem value={'de-de'}>German</MenuItem>
+        {
+          LANGUAGES.map(LAN => <MenuItem key={LAN.CODE} value={LAN.CODE}>{LAN.NAME}</MenuItem>)
+        }
       </Select>
       <FormHelperText>Please choose output language</FormHelperText>
     </StyledFormControl>
